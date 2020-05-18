@@ -4,16 +4,16 @@
             <label for="cardNumber">CARD NUMBER</label>
             <input type="text" v-model="card.cardNumber" id="cardNumber" name="cardNumber">
             <div class="error">
-                <p class="errorCnFormat">Numbers only in format xxxx xxxx xxxx xxxx</p>
-                <p class="errorCnEmpty"></p>
+                <p v-if="cardValidations.cardNumberFormatValidated && !cardValidations.cardNumberEmpty" class="errorCnFormat">Numbers only in format xxxx xxxx xxxx xxxx</p>
+                <p v-if="cardValidations.cardNumberEmpty" class="errorCnEmpty">Field cannot be empty</p>
             </div>
         </div>
         <div class="carholderNameDiv">
             <label for="carholderName">CARDHOLDER NAME</label>
             <input type="text" v-model="card.carholderName" id="carholderName" name="carholderName">
             <div class="error">
-                <p class="errorNameEmpty">Field cannot be empty</p>
-                <p class="errorFormat">Please write both first and last name</p>
+                <p v-if="cardValidations.nameEmpty" class="errorNameEmpty">Field cannot be empty</p>
+                <p v-if="cardValidations.nameFormat && !cardValidations.nameEmpty" class="errorFormat">Please write both first and last name</p>
             </div>
         </div>
         <div class="validAndCcv">
@@ -21,16 +21,16 @@
                 <label for="validThru">VALID THRU</label>
                 <input type="text" v-model="card.validUntil" id="validThru" name="validThru">
                 <div class="error">
-                    <p class="errorFormat">Please write in format MM/YY</p>
-                    <p class="errorEmpty">Field cannot be empty</p>
+                    <p v-if="cardValidations.validThruFormat && !cardValidations.validThruEmpty" class="errorFormat">Please write in format MM/YY</p>
+                    <p v-if="cardValidations.validThruEmpty" class="errorEmpty">Field cannot be empty</p>
                 </div>
             </div>
             <div class="ccvDiv">
                 <label for="ccv">CCV</label>
-                <input type="text" id="ccv" name="ccv">
+                <input type="text" v-model="card.ccv" id="ccv" name="ccv">
                 <div class="error">
-                    <p class="errorFormat">Three digits only</p>
-                    <p class="errorEmpty">Field cannot be empty</p>
+                    <p v-if="cardValidations.ccvFormat && !cardValidations.ccvEmpty" class="errorFormat">Three digits only</p>
+                    <p v-if="cardValidations.ccvEmpty" class="errorEmpty">Field cannot be empty</p>
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
                 </option>
             </select>
             <div class="error">
-             <p class="errorEmpty">Field cannot be empty</p>
+             <p v-if="cardValidations.vendorEmpty" class="errorEmpty">Field cannot be empty</p>
             </div>
         </div>
     </form>
@@ -62,7 +62,6 @@ export default {
           return this.$root.getVendors()
       }
     }
-
 }
 </script>
 
@@ -88,7 +87,7 @@ export default {
     .validAndCcv {
         display: flex;
     }
-    .validAndCcv div {
+    .validThruDiv, .ccvDiv {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -98,10 +97,14 @@ export default {
         margin-right: 2.5rem;
     }
     .error {
+        justify-content: space-between3;
+        display: flex;
+        flex-direction: row;
         color : red;
         font-size: 0.6rem;
     }
     .error > p {
+        margin-left: 0.2rem;
         text-align: left;
     }
 </style>
