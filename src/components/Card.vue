@@ -7,10 +7,10 @@
                         }">
         <div class="logos" >
             <div>
-                <img src="@/assets/chip-dark.svg" alt="chip-dark">
+                <img v-bind:src="require('@/assets/chip' + card.vendor.chip)" alt="chip-light">
             </div>
             <div>
-                <img v-bind:src="require('@/assets/' + card.vendor.logo)" alt="alt">
+                <img v-bind:src="require('@/assets/' + card.vendor.logo)" alt="chip-dark">
             </div>
         </div>
         <div class="cardNumber" v-bind:style="{'text-shadow' : card.vendor.textShadow}">

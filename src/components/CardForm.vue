@@ -44,7 +44,7 @@
                 </option>
             </select>
             <div class="error">
-                <p v-if="cardValidations.vendorEmpty" class="errorEmpty">Field cannot be empty</p>
+                <p v-if="cardValidations.vendorEmpty" class="errorEmpty">Please choose vendor</p>
             </div>
         </div>
     </form>

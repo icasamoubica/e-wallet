@@ -25,11 +25,12 @@ export default {
             "validUntil" : 'MM/YY',
             "ccv" : "XXX",
             "vendor" : {
-                "name" : "Bitcoin",
+                "name" : "none",
                 "logo" : "vendor-bitcoin.svg",
-                "color" : "#ffcf57",
+                "color" : "lightgrey",
                 "textColor" : "black",
-                "textShadow" : "0.5px 0.5px #ffffff, -0.5px -0.5px lightgrey"
+                "textShadow" : "0.5px 0.5px #ffffff, -0.5px -0.5px lightgrey",
+                "chip" : "-dark.svg"
             }
         },
         // object contains errors for failed validations
@@ -120,7 +121,7 @@ export default {
                 this.cardValidations.ccvEmpty = false
             }
             // validating vendor
-            if (this.newCard.vendor === null) {
+            if (this.newCard.vendor.name === 'none') {
                 this.cardValidations.vendorEmpty = true
             } else {
                 this.cardValidations.vendorEmpty = false

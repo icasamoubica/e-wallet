@@ -21,7 +21,8 @@ new Vue({
               "logo" : "vendor-bitcoin.svg",
               "color" : "#ffcf57",
               "textColor" : "black",
-              "textShadow" : "0.03rem 0.03rem #ffffff, -0.03rem -0.03rem lightgrey"
+              "textShadow" : "0.03rem 0.03rem #ffffff, -0.03rem -0.03rem lightgrey",
+              "chip" : "-light.svg"
             }
           },
           {
@@ -34,7 +35,8 @@ new Vue({
               "logo" : "vendor-evil.svg",
               "color" : "#d43761",
               "textColor" : "white",
-              "textShadow" : "1px 1px 0px #000, -0.5px -0.5px lightgrey"
+              "textShadow" : "1px 1px 0px #000, -0.5px -0.5px lightgrey",
+              "chip" : "-light.svg"
             }
           },
           {
@@ -47,7 +49,8 @@ new Vue({
               "logo" : "vendor-blockchain.svg",
               "color" : "#82679e",
               "textColor" : "white",
-              "textShadow" : "1px 1px 0px #000, -0.5px -0.5px lightgrey"
+              "textShadow" : "1px 1px 0px #000, -0.5px -0.5px lightgrey",
+              "chip" : "-light.svg"
             }
           },
           {
@@ -60,7 +63,8 @@ new Vue({
               "logo" : "vendor-ninja.svg",
               "color" : "#2b2a25",
               "textColor" : "white",
-              "textShadow" : "-0.5px -0.5px black, 0.5px 0.5px lightgrey"
+              "textShadow" : "-0.5px -0.5px black, 0.5px 0.5px lightgrey",
+              "chip" : "-light.svg"
             }
           }
         ]

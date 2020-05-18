@@ -5,28 +5,32 @@
             "logo" : "vendor-bitcoin.svg",
             "color" : "#ffcf57",
             "textColor" : "black",
-            "textShadow" : "0.5px 0.5px #ffffff, -0.5px -0.5px lightgrey"
+            "textShadow" : "0.5px 0.5px #ffffff, -0.5px -0.5px lightgrey",
+            "chip" : "-light.svg"
         },
         {
             "name" : "Blockchain",
             "logo" : "vendor-blockchain.svg",
             "color" : "#82679e",
             "textColor" : "white",
-            "textShadow" : "1px 1px 0px black"
+            "textShadow" : "1px 1px 0px black",
+            "chip" : "-light.svg"
         },
         {
             "name" : "Evil",
             "logo" : "vendor-evil.svg",
             "color" : "#d43761",
             "textColor" : "white",
-            "textShadow" : "1px 1px 0px #ffffff"
+            "textShadow" : "1px 1px 0px #ffffff",
+            "chip" : "-light.svg"
         },
         {
             "name" : "Ninja",
             "logo" : "vendor-ninja.svg",
             "color" : "#2b2a25",
             "textColor" : "white",
-            "textShadow" : "-0.5px -0.5px black"
+            "textShadow" : "-0.5px -0.5px black",
+            "chip" : "-light.svg"
         }
     ]
 }
