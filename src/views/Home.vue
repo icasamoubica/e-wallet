@@ -1,6 +1,9 @@
 <template>
   <div class="home">
       <top v-bind:topText="'E-WALLET'"></top>
+      <div class="deleteCard" v-if="cardIsSelected" v-on:click="confirmDeleteSelected">
+         <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M19 24h-14c-1.104 0-2-.896-2-2v-16h18v16c0 1.104-.896 2-2 2zm-7-10.414l3.293-3.293 1.414 1.414-3.293 3.293 3.293 3.293-1.414 1.414-3.293-3.293-3.293 3.293-1.414-1.414 3.293-3.293-3.293-3.293 1.414-1.414 3.293 3.293zm10-8.586h-20v-2h6v-1.5c0-.827.673-1.5 1.5-1.5h5c.825 0 1.5.671 1.5 1.5v1.5h6v2zm-8-3h-4v1h4v-1z"/></svg>
+      </div>
       <card v-if="cardIsSelected"
             v-bind:card="selectedCard"
             v-on:click="unselectCard"
@@ -32,20 +35,27 @@ export default {
   }},
 
   methods : {
-    cardIsSelected() {
-      return this.selectedCard!=null
-    },
     selectCard(cardToSelect) {
       this.selectedCard = cardToSelect
     },
     unselectCard() {
       this.selectedCard = null
-    }
+    },
+    deleteSelected() {
+      this.$root.deleteCard(this.selectedCard.id)
+      this.selectedCard = null
+    },
+      confirmDeleteSelected() {
+        this.deleteSelected()
+      }
   },
 
   computed : {
+      cardIsSelected() {
+        return this.selectedCard!=null
+      },
       existingCards() {
-          return this.$root.getCards()
+        return this.$root.getCards()
       },
       getCardStackHeight() {
         return 30 + this.$root.getCards.length*4
@@ -63,9 +73,20 @@ export default {
 
 <style>
     .home {
-      justify-self: flex-end;
         display: flex;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .deleteCard {
+        position: relative;
+        left: 10rem;
+        border: 2px solid black;
+        box-shadow: 0 0 2px black;
+        border-radius: 1rem;
+        width: 2.5rem;
+        height : 2.5rem;
+        display: flex;
         align-items: center;
         justify-content: center;
     }
@@ -78,4 +99,5 @@ export default {
       width: 25rem;
       background-color: white;
     }
+    
 </style>

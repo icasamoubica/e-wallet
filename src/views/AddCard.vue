@@ -5,7 +5,7 @@
         <card v-bind:card=newCard />
         <card-form v-bind:card = newCard></card-form>
         <router-link v-bind:to="'/'">
-            <button v-on:click="addCard(newCard)">ADD CARD</button>
+            <button class="adCardButtonBlack" v-on:click="addCard(newCard)">ADD CARD</button>
         </router-link>
     </div>
 </template>
@@ -65,7 +65,7 @@ export default {
     .cardNumber {
         font-size: 1.8rem;
     }
-    button {
+    .adCardButtonBlack {
       color: white;
       border: 1px solid black;
       margin-top: 1rem;

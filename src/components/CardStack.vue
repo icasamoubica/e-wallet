@@ -5,7 +5,8 @@
               v-bind:card="singleCard"
               v-on:click="$emit('cardSelected', singleCard)"
               v-bind:style="{   'top':index*4+'rem', 
-                                'box-shadow' : '0px 0px 5px rgba(0, 0, 0, 0.5)'}"
+                                'box-shadow' : '0px 0px 5px rgba(0, 0, 0, 0.5)'
+                                }"
         />
     </div>
 </template>
@@ -24,10 +25,8 @@ export default {
     },
     computed : {
         getCardStack() {
-            console.log(this.cardStack);
-            
             if(this.selectedCard!=null) {
-                 return this.cardStack.filter(card => card.id!==this.selectedCard.id)
+                return this.cardStack.filter(card => card.id!==this.selectedCard.id)
             } else {
                 return this.cardStack
             }

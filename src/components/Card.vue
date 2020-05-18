@@ -40,6 +40,8 @@ export default {
     border-radius: 0.6rem;
     width: 22rem;
     height: 13em;
+    transform : perspective(200px) translateZ(0);
+    transition: transform, z-index 100ms linear;
 }
 .logos {
     width: 100%;
@@ -77,5 +79,9 @@ export default {
     text-align: right;
     font-size: 1rem;
     margin-top: 0;
+}
+.card:hover {
+    transform : perspective(200px) translateZ(2px);
+    z-index: 2;
 }
 </style>

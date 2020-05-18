@@ -49,7 +49,21 @@ new Vue({
               "textColor" : "white",
               "textShadow" : " 1px 1px 0px #000"
             }
+          },
+          {
+            "id" : 4,
+            "cardNumber" : '8484 2643 1009 0034',
+            "carholderName" : 'FRODO BAGGINS',
+            "validUntil" : '04/76',
+            "vendor" : {
+              "name" : "Ninja",
+              "logo" : "vendor-ninja.svg",
+              "color" : "#2b2a25",
+              "textColor" : "white",
+              "textShadow" : "none"
+            }
           }
+
 
 
         ]
@@ -74,7 +88,9 @@ new Vue({
               ids.push(card.id)
             }
             return Math.max(...ids)
-              
+          },
+          deleteCard(id) {
+            this.cards = this.cards.filter(card => card.id != id)
           }
     },
   router,
