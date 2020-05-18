@@ -4,7 +4,7 @@
             <label for="cardNumber">CARD NUMBER</label>
             <input type="text" v-model="card.cardNumber" id="cardNumber" name="cardNumber">
             <div class="error">
-                <p v-if="cardValidations.cardNumberFormatValidated && !cardValidations.cardNumberEmpty" class="errorCnFormat">Numbers only in format xxxx xxxx xxxx xxxx</p>
+                <p v-if="cardValidations.cardNumberFormat && !cardValidations.cardNumberEmpty" class="errorCnFormat">Numbers only in format xxxx xxxx xxxx xxxx</p>
                 <p v-if="cardValidations.cardNumberEmpty" class="errorCnEmpty">Field cannot be empty</p>
             </div>
         </div>
@@ -44,7 +44,7 @@
                 </option>
             </select>
             <div class="error">
-             <p v-if="cardValidations.vendorEmpty" class="errorEmpty">Field cannot be empty</p>
+                <p v-if="cardValidations.vendorEmpty" class="errorEmpty">Field cannot be empty</p>
             </div>
         </div>
     </form>

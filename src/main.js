@@ -60,7 +60,7 @@ new Vue({
               "logo" : "vendor-ninja.svg",
               "color" : "#2b2a25",
               "textColor" : "white",
-              "textShadow" : "none"
+              "textShadow" : "-0.5px -0.5px black, 0.5px 0.5px lightgrey"
             }
           }
 

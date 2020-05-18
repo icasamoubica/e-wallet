@@ -25,11 +25,11 @@ export default {
             "validUntil" : 'MM/YY',
             "ccv" : "XXX",
             "vendor" : {
-              "name" : "bitcoin",
-              "logo" : "vendor-bitcoin.svg",
-              "color" : "lightgrey",
-              "textColor" : "black",
-              "textShadow" : "1px 1px 0px #ffffff"
+                "name" : "Bitcoin",
+                "logo" : "vendor-bitcoin.svg",
+                "color" : "#ffcf57",
+                "textColor" : "black",
+                "textShadow" : "0.5px 0.5px #ffffff, -0.5px -0.5px lightgrey"
             }
         },
         // object contains errors for failed validations
@@ -59,6 +59,21 @@ export default {
             return this.$root.getNewId()
         },
         validate() {
+
+            // resetting
+
+            this.cardValidations = {
+                "cardNumberFormat" : false,
+                "cardNumberEmpty" : false,
+                "nameFormat" : false,
+                "nameEmpty" : false,
+                "validThruFormat" : false,
+                "validThruEmpty" : false,
+                "ccvFormat" : false,
+                "ccvEmpty" : false,
+                "vendorEmpty" : false
+            }
+
             // validating card number
             if (this.newCard.cardNumber.length === 0) {
                 this.cardValidations.cardNumberEmpty = true
@@ -68,7 +83,7 @@ export default {
                     && Number.isInteger(parseInt(this.newCard.cardNumber.substring(5, 9)), 10)
                     && Number.isInteger(parseInt(this.newCard.cardNumber.substring(10, 14)), 10)
                     && Number.isInteger(parseInt(this.newCard.cardNumber.substring(15, 19)), 10))) {
-                        this.cardValidations.cardNumberFormat = true
+                this.cardValidations.cardNumberFormat = true
             } else {
                 this.cardValidations.cardNumberFormat = false
             }
@@ -87,6 +102,7 @@ export default {
                 this.cardValidations.validThruFormat = true
             } else if (!(   Number.isInteger(parseInt(this.newCard.validUntil.substring(0,1)))
                         && Number.isInteger(parseInt(this.newCard.validUntil.substring(3,4))))) {
+
                 this.cardValidations.validThruFormat = true
             } else if (!this.newCard.validUntil.trim().includes('/')) {
                 this.cardValidations.validThruFormat = true
@@ -110,16 +126,16 @@ export default {
                 this.cardValidations.vendorEmpty = false
             }
             if (this.allValidationsPassed()) {
+                console.log('validations passed');
+                
                 this.$root.addCard(this.newCard)
-                this.$router.push('Home')
+                this.$router.push('/')
             }
-        }
-    },
-
-    computed : {
+        },
         allValidationsPassed() {
-            if (
-                this.cardValidations.cardNumberFormat === false &&
+            console.log('running validations');
+            
+            if (this.cardValidations.cardNumberFormat === false &&
                 this.cardValidations.cardNumberEmpty === false &&
                 this.cardValidations.nameFormat === false &&
                 this.cardValidations.nameEmpty === false &&
@@ -127,14 +143,14 @@ export default {
                 this.cardValidations.validThruEmpty === false &&
                 this.cardValidations.ccvFormat === false &&
                 this.cardValidations.ccvEmpty === false &&
-                this.cardValidations.vendorEmpty
-            ) {
+                this.cardValidations.vendorEmpty === false) {
+                console.log('everything in order');
                 return true
             } else {
                 return false
             }
         }
-    }  
+    }
 }
 </script>
 
