@@ -61,7 +61,7 @@ export default {
         },
         validate() {
 
-            // resetting
+            // resetting validation values
 
             this.cardValidations = {
                 "cardNumberFormat" : false,
@@ -128,7 +128,6 @@ export default {
             }
             if (this.allValidationsPassed()) {
                 console.log('validations passed');
-                
                 this.$root.addCard(this.newCard)
                 this.$router.push('/')
             }
@@ -174,13 +173,13 @@ export default {
         font-size: 1.8rem;
     }
     .adCardButtonBlack {
-      color: white;
-      border: 1px solid black;
-      margin-top: 1rem;
-      font-size: 1.2rem;
-      padding: 1.5rem;
-      border-radius: 0.6rem;
-      width: 25rem;
-      background-color: black;
+        color: white;
+        border: 1px solid black;
+        margin-top: 1rem;
+        font-size: 1.2rem;
+        padding: 1.5rem;
+        border-radius: 0.6rem;
+        width: 25rem;
+        background-color: black;
     }
 </style>
