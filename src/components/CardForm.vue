@@ -51,10 +51,11 @@ export default {
         max-width: 25rem;
     }
     input, select {
+        border: 1.3px solid black;
         width: 100%;
         color: rgb(70, 68, 68);
         border-radius: 0.6rem;
-        height: 2.7rem;
+        height: 3.5rem;
         font-size: 1.2rem;
         text-align: center;
     }

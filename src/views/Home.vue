@@ -8,6 +8,7 @@
       </card>
       <card-stack v-bind:cardStack="existingCards"
                   v-bind:containerHeight="getCardStackHeight"
+                  v-bind:selectedCard="selectedCard"
                   v-on:cardSelected="selectCard">
       </card-stack>
       <router-link v-bind:to="'/addcard'">
@@ -47,11 +48,8 @@ export default {
           return this.$root.getCards()
       },
       getCardStackHeight() {
-        console.log(this.$root.getCards().length*4 + 30);
-        
         return 30 + this.$root.getCards.length*4
       }
-      
     },
 
   components : {
