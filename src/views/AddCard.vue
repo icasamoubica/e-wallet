@@ -3,7 +3,8 @@
         <top class="topText" v-bind:topText="'ADD A NEW'"></top>
         <top class="topText" v-bind:topText="'BANK CARD'"></top>
         <card v-bind:card=newCard />
-        <card-form v-bind:card = newCard></card-form>
+        <card-form  v-bind:card = newCard
+                    v-bind:cardValidations="cardValidations"></card-form>
         <router-link v-bind:to="'/'">
             <button class="adCardButtonBlack" v-on:click="addCard(newCard)">ADD CARD</button>
         </router-link>
@@ -29,6 +30,17 @@ export default {
               "textColor" : "black",
               "textShadow" : "1px 1px 0px #ffffff"
             }
+        },
+        cardValidations : {
+            "cardNumberFormat" : true,
+            "cardNumberEmpty" : true,
+            "nameFormat" : true,
+            "nameEmpty" : true,
+            "validThruFormat" : true,
+            "validThruEmpty" : true,
+            "ccvFormat" : true,
+            "ccvEmpty" : true,
+            "vendorEmpty" : true
         }
     }},
     components : {

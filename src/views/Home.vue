@@ -15,10 +15,9 @@
                   v-on:cardSelected="selectCard">
       </card-stack>
       <router-link v-bind:to="'/addcard'">
-        <button>ADD A NEW CARD</button>
+        <button class="addCardButton">ADD A NEW CARD</button>
       </router-link>
       <div class="confirmDialog" v-if="renderDeleteConfirmation">
-        <p>Delete Card</p>
         <p>Are you sure you want</p>
         <p>to delete this card?</p>
         <button v-on:click="deleteSelected">YES</button>
@@ -102,7 +101,7 @@ export default {
       align-items: center;
       justify-content: center;
     }
-    button {
+    button.addCardButton {
       border: 1px solid black;
       margin-top: 1rem;
       font-size: 1.2rem;
@@ -115,17 +114,19 @@ export default {
       border: 2px solid black;
       border-radius: 3px;
       padding: 2rem;
-      background-color: rgb(219, 198, 198);
+      background-color: rgb(211, 211, 211);
       position: absolute;
       margin: auto;
       z-index: 10;
-      box-shadow: 0 0 100px black;
+      box-shadow: 0 0 30rem rgb(255, 255, 255);
+    }
+    .confirmDialog p {
+      font-weight: 900;
     }
     .confirmDialog button {
-        width: 5rem;
-        height: 2rem;
-        text-align: center;
-        padding-bottom: 2.2rem;
+      margin: 1rem;
+      width: 5rem;
+      height: 2rem;
     }
     
 </style>

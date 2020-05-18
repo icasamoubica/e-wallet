@@ -5,7 +5,7 @@
             "logo" : "vendor-bitcoin.svg",
             "color" : "#ffcf57",
             "textColor" : "black",
-            "textShadow" : "1px 1px 0px #ffffff"
+            "textShadow" : "0.1rem 0.1rem #ffffff, -0.1rem -0.1rem lightgrey"
         },
         {
             "name" : "Blockchain",

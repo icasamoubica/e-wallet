@@ -18,9 +18,9 @@
         </div>
         <div class="cardInfo" v-bind:style="{'color' : card.vendor.textColor }">
             <p class="textForCarholderName"> CARDHOLDER NAME</p>
-            <p class="textForValidThru">VALID THRU</p>
+            <p class="textForValidThru" v-bind:style="{'text-shadow' : card.vendor.textShadow}">VALID THRU</p>
             <p class="cardholderName">{{card.carholderName}}</p>
-            <P class="validThru">{{card.validUntil}}</P>
+            <P class="validThru" v-bind:style="{'text-shadow' : card.vendor.textShadow}">{{card.validUntil}}</P>
         </div>
     </div>
 </template>

@@ -21,7 +21,7 @@ new Vue({
               "logo" : "vendor-bitcoin.svg",
               "color" : "#ffcf57",
               "textColor" : "black",
-              "textShadow" : "1px 1px 0px #ffffff"
+              "textShadow" : "0.03rem 0.03rem #ffffff, -0.03rem -0.03rem lightgrey"
             }
           },
           {
