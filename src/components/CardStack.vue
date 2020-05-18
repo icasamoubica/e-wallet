@@ -24,14 +24,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .cardStackContainer {
     position : relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: start;
-        margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .cardStackContainer .card {
     box-shadow: none;

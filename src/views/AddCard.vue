@@ -48,6 +48,11 @@ export default {
 </script>
 
 <style>
+    .addCard {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     .topText {
         margin: 0;
         font-size: 2rem;
