@@ -17,6 +17,13 @@
       <router-link v-bind:to="'/addcard'">
         <button>ADD A NEW CARD</button>
       </router-link>
+      <div class="confirmDialog" v-if="renderDeleteConfirmation">
+        <p>Delete Card</p>
+        <p>Are you sure you want</p>
+        <p>to delete this card?</p>
+        <button v-on:click="deleteSelected">YES</button>
+        <button v-on:click="cancelConfirmation">NO</button>
+      </div>
   </div>
 </template>
 
@@ -31,7 +38,8 @@ export default {
 
   data(){return{
     cardStackHeight : 0,
-    selectedCard : null
+    selectedCard : null,
+    renderDeleteConfirmation : false
   }},
 
   methods : {
@@ -42,12 +50,16 @@ export default {
       this.selectedCard = null
     },
     deleteSelected() {
+      this.renderDeleteConfirmation = false
       this.$root.deleteCard(this.selectedCard.id)
       this.selectedCard = null
     },
-      confirmDeleteSelected() {
-        this.deleteSelected()
-      }
+    confirmDeleteSelected() {
+      this.renderDeleteConfirmation = true
+    },
+    cancelConfirmation() {
+      this.renderDeleteConfirmation = false
+    }
   },
 
   computed : {
@@ -73,22 +85,22 @@ export default {
 
 <style>
     .home {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
     .deleteCard {
-        position: relative;
-        left: 10rem;
-        border: 2px solid black;
-        box-shadow: 0 0 2px black;
-        border-radius: 1rem;
-        width: 2.5rem;
-        height : 2.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      position: relative;
+      left: 10rem;
+      border: 2px solid black;
+      box-shadow: 0 0 2px black;
+      border-radius: 1rem;
+      width: 2.5rem;
+      height : 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     button {
       border: 1px solid black;
@@ -98,6 +110,22 @@ export default {
       border-radius: 0.6rem;
       width: 25rem;
       background-color: white;
+    }
+    .confirmDialog {
+      border: 2px solid black;
+      border-radius: 3px;
+      padding: 2rem;
+      background-color: rgb(219, 198, 198);
+      position: absolute;
+      margin: auto;
+      z-index: 10;
+      box-shadow: 0 0 100px black;
+    }
+    .confirmDialog button {
+        width: 5rem;
+        height: 2rem;
+        text-align: center;
+        padding-bottom: 2.2rem;
     }
     
 </style>

@@ -41,7 +41,7 @@ export default {
     width: 22rem;
     height: 13em;
     transform : perspective(200px) translateZ(0);
-    transition: transform, z-index 100ms linear;
+    transition: transform 100ms ease-in-out;
 }
 .logos {
     width: 100%;
@@ -81,7 +81,7 @@ export default {
     margin-top: 0;
 }
 .card:hover {
-    transform : perspective(200px) translateZ(2px);
-    z-index: 2;
+    transform : perspective(200px) translateZ(5px);
+    z-index: 1;
 }
 </style>
