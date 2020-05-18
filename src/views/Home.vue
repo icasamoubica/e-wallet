@@ -69,7 +69,7 @@ export default {
         return this.$root.getCards()
       },
       getCardStackHeight() {
-        return 30 + this.$root.getCards.length*4
+        return 20 + (this.$root.getCards().length-1)*4
       }
     },
 
@@ -77,6 +77,9 @@ export default {
       Top,
       Card,
       CardStack
+  },
+  created() {
+    this.$root.loadData()
   }
 
 }

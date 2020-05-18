@@ -34,7 +34,7 @@ new Vue({
               "logo" : "vendor-evil.svg",
               "color" : "#d43761",
               "textColor" : "white",
-              "textShadow" : " 1px 1px 0px #000"
+              "textShadow" : "1px 1px 0px #000, -0.5px -0.5px lightgrey"
             }
           },
           {
@@ -47,7 +47,7 @@ new Vue({
               "logo" : "vendor-blockchain.svg",
               "color" : "#82679e",
               "textColor" : "white",
-              "textShadow" : " 1px 1px 0px #000"
+              "textShadow" : "1px 1px 0px #000, -0.5px -0.5px lightgrey"
             }
           },
           {
@@ -63,36 +63,45 @@ new Vue({
               "textShadow" : "-0.5px -0.5px black, 0.5px 0.5px lightgrey"
             }
           }
-
-
-
         ]
     }},
-
-      methods : {
-          getCards() {
-              return this.cards
-          },
-          getVendors() {
-            return this.vendors
-          },
-          addCard(cardToAdd) {
-            this.cards.push(cardToAdd)
-          },
-          getNewId() {
-            return this.getMax() + 1
-          },
-          getMax() {
-            let ids = []
-            for (let card of this.cards) {
-              ids.push(card.id)
-            }
-            return Math.max(...ids)
-          },
-          deleteCard(id) {
-            this.cards = this.cards.filter(card => card.id != id)
+    methods : {
+        getCards() {
+            return this.cards
+        },
+        getVendors() {
+          return this.vendors
+        },
+        addCard(cardToAdd) {
+          this.cards.push(cardToAdd)
+          localStorage.setItem('cards', JSON.stringify(this.cards))
+        },
+        getNewId() {
+          return this.getMax() + 1
+        },
+        getMax() {
+          let ids = []
+          for (let card of this.cards) {
+            ids.push(card.id)
           }
-    },
+          return Math.max(...ids)
+        },
+        deleteCard(id) {
+          this.cards = this.cards.filter(card => card.id != id)
+        },
+        loadData() {
+          console.log('attempting to load data...');
+          if (localStorage.getItem('cards') != null) {
+            console.log('Data exists, loading...');
+            this.cards = JSON.parse(localStorage.getItem('cards'))
+          } else {
+            console.log('No data found...');
+            
+          }
+        }
+      },
+    
   router,
+
   render: h => h(App)
 }).$mount('#app')
