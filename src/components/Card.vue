@@ -1,9 +1,9 @@
 <template>
-    <div class="card"   v-if="card!=null"
+    <div class="card"   v-bind:class="{shadowed:shadowSize}"
+                        v-if="card!=null"
                         v-on:click="$emit('click')"
-                        v-bind:style="{ 
-                        'background-color': card.vendor.color,
-                        'color' : card.vendor.textColor
+                        v-bind:style="{ 'background-color': card.vendor.color,
+                                        'color' : card.vendor.textColor
                         }">
         <div class="logos" >
             <div>
@@ -29,7 +29,8 @@
 
 export default {
     props : {
-        card: Object
+        card: Object,
+        shadowSize : Boolean
     }
 }
 </script>
@@ -40,9 +41,11 @@ export default {
     border-radius: 0.6rem;
     width: 22rem;
     height: 13em;
-    transform : perspective(200px) translateZ(0);
     transition: transform 100ms ease-in-out;
-    box-shadow: inset -2px -2px 6px 0px rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 0px 5px 0 black, inset -0.5px -0.5px 1px 0px rgba(255, 255, 255, 0.3);
+}
+.card.shadowed {
+    box-shadow: 0px 0px 10px 1px black, inset -0.5px -0.5px 1px 0px rgba(255, 255, 255, 0.3);
 }
 .logos {
     width: 100%;
@@ -82,6 +85,7 @@ export default {
     font-size: 1rem;
     margin-top: 0;
 }
+
 .card:hover {
     transform : perspective(200px) translateZ(5px);
     z-index: 1;

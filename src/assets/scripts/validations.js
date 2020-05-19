@@ -15,6 +15,7 @@ export default {
         }
 
         // validating card number
+
         if (card.cardNumber.length === 0) {
             cardValidations.cardNumberEmpty = true
         } else if (card.cardNumber.length != 19) {
@@ -28,6 +29,7 @@ export default {
             cardValidations.cardNumberFormat = false
         }
         // validating cardholder name
+
         if (card.carholderName.length===0) {
             cardValidations.nameEmpty = true
         } else if (!card.carholderName.trim().includes(' ')) {
@@ -36,20 +38,24 @@ export default {
             cardValidations.nameFormat = false
         }
         // validating valid thru
+
         if (card.validUntil.length === 0) {
             cardValidations.validThruEmpty = true
         } else if (card.validUntil.length != 5) {
             cardValidations.validThruFormat = true
-        } else if (!(   Number.isInteger(parseInt(card.validUntil.substring(0,1)))
-                    && Number.isInteger(parseInt(card.validUntil.substring(3,4))))) {
-
+        } else if (!(   Number.isInteger(parseInt(card.validUntil.substring(0,2)))
+                    && Number.isInteger(parseInt(card.validUntil.substring(3,5))))) {
             cardValidations.validThruFormat = true
         } else if (!card.validUntil.trim().includes('/')) {
+            cardValidations.validThruFormat = true
+        } else if ( parseInt(card.validUntil.substring(0,2)) < 1  ||
+                    parseInt(card.validUntil.substring(0,2)) > 12  ) {
             cardValidations.validThruFormat = true
         } else {
             cardValidations.validThruFormat = false
         }
         // validating ccv
+
         if (card.ccv.length === 0) {
             cardValidations.ccvEmpty = true
         } else if (card.ccv.length != 3) {
@@ -60,6 +66,7 @@ export default {
             cardValidations.ccvEmpty = false
         }
         // validating vendor
+
         if (card.vendor.name === 'none') {
             cardValidations.vendorEmpty = true
         } else {

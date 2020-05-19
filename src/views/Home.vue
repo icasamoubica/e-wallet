@@ -7,7 +7,8 @@
       <card v-if="cardIsSelected"
             v-bind:card="selectedCard"
             v-on:click="unselectCard"
-            v-bind:style="{'box-shadow' : '0px 0px 10px black, inset -0.5px -0.5px 1px 0px rgba(255, 255, 255, 0.3)'}">
+            shadowSize
+            >
       </card>
       <card-stack v-bind:cardStack="existingCards"
                   v-bind:containerHeight="getCardStackHeight"
@@ -122,7 +123,7 @@ export default {
       position: absolute;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
     }
     .confirmDialog {

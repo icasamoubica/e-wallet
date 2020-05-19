@@ -5,9 +5,7 @@
         <card v-bind:card=newCard />
         <card-form  v-bind:card = newCard
                     v-bind:cardValidations="cardValidations"></card-form>
-        <!-- <router-link v-bind:to="'/'"> -->
-            <button class="adCardButtonBlack" v-on:click="validate">ADD CARD</button>
-        <!-- </router-link> -->
+        <button class="adCardButtonBlack" v-on:click="validate">ADD CARD</button>
     </div>
 </template>
 
@@ -21,7 +19,7 @@ export default {
     data() { return {
 
         // initial card for adding. note that the color is lightgrey by default
-        // and that logo is bitcoing without that being the vendor
+        // and that logo is bitcoing without it being the vendor
 
         newCard : {
             "id" : this.getNewId(),
@@ -60,6 +58,9 @@ export default {
         CardForm
     },
     methods : {
+
+        // Dont use addCard without validation
+
         addCard(cardToAdd) {
             this.$root.addCard(cardToAdd)
         },
@@ -67,9 +68,7 @@ export default {
             return this.$root.getNewId()
         },
         validate() {
-
             this.cardValidations = Validations.validate(this.newCard)
-
             if (this.allValidationsPassed()) {
                 this.$root.addCard(this.newCard)
                 this.$router.push('/')
