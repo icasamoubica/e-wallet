@@ -1,5 +1,5 @@
 export default {
-    
+
     validate(card) {
 
         let cardValidations = {
@@ -53,9 +53,9 @@ export default {
         if (card.ccv.length === 0) {
             cardValidations.ccvEmpty = true
         } else if (card.ccv.length != 3) {
-            cardValidations.ccvEmpty = true
+            cardValidations.ccvFormat = true
         } else if (!(Number.isInteger(parseInt(card.ccv)))) {
-            cardValidations.ccvEmpty = true
+            cardValidations.ccvFormat = true
         } else {
             cardValidations.ccvEmpty = false
         }
