@@ -42,6 +42,7 @@ export default {
     height: 13em;
     transform : perspective(200px) translateZ(0);
     transition: transform 100ms ease-in-out;
+    box-shadow: inset -2px -2px 6px 0px rgba(255, 255, 255, 0.3);
 }
 .logos {
     width: 100%;
