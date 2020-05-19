@@ -51,6 +51,7 @@ export default {
     margin-bottom: 1rem;
 }
 .cardNumber {
+    min-height: 2.4rem;
     margin: 0;
     padding: 0;
     font-size: 2rem;
