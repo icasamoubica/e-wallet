@@ -17,11 +17,13 @@
       <router-link v-bind:to="'/addcard'">
         <button class="addCardButton">ADD A NEW CARD</button>
       </router-link>
-      <div class="confirmDialog" v-if="renderDeleteConfirmation">
-        <p>Are you sure you want</p>
-        <p>to delete this card?</p>
-        <button v-on:click="deleteSelected">YES</button>
-        <button v-on:click="cancelConfirmation">NO</button>
+      <div class="confirmDialogContainer" v-if="renderDeleteConfirmation">
+        <div class="confirmDialog">
+          <p>Are you sure you want</p>
+          <p>to delete this card?</p>
+          <button v-on:click="deleteSelected">YES</button>
+          <button v-on:click="cancelConfirmation">NO</button>
+        </div>
       </div>
   </div>
 </template>
@@ -97,7 +99,7 @@ export default {
       left: 10rem;
       border: 2px solid black;
       box-shadow: 0 0 2px black;
-      border-radius: 1rem;
+      border-radius: 0.8rem;
       width: 2.5rem;
       height : 2.5rem;
       display: flex;
@@ -113,15 +115,24 @@ export default {
       width: 25rem;
       background-color: white;
     }
+    .confirmDialogContainer {
+      width: 100vw;
+      height: 100vh;
+      z-index: 9;
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
     .confirmDialog {
       border: 2px solid black;
-      border-radius: 3px;
+      border-radius: 1rem;
       padding: 2rem;
       background-color: rgb(211, 211, 211);
-      position: absolute;
-      margin: auto;
+      position: fixed;
       z-index: 10;
-      box-shadow: 0 0 30rem rgb(255, 255, 255);
+      box-shadow: 0 0 5rem 5rem rgba(255, 255, 255, 1);
     }
     .confirmDialog p {
       font-weight: 900;
@@ -130,6 +141,7 @@ export default {
       margin: 1rem;
       width: 5rem;
       height: 2rem;
+      border-radius: 0.3rem;
     }
     
 </style>
