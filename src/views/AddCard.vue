@@ -26,11 +26,11 @@ export default {
             "ccv" : "XXX",
             "vendor" : {
                 "name" : "none",
-                "logo" : "vendor-bitcoin.svg",
+                "logo" : "bitcoin",
                 "color" : "lightgrey",
                 "textColor" : "black",
                 "textShadow" : "0.5px 0.5px #ffffff, -0.5px -0.5px lightgrey",
-                "chip" : "-dark.svg"
+                "chip" : "dark"
             }
         },
         // object contains errors for failed validations

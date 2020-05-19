@@ -2,35 +2,35 @@
     "vendors" : [
         {
             "name" : "Bitcoin",
-            "logo" : "vendor-bitcoin.svg",
+            "logo" : "bitcoin",
             "color" : "#ffcf57",
             "textColor" : "black",
             "textShadow" : "0.5px 0.5px #ffffff, -0.5px -0.5px lightgrey",
-            "chip" : "-light.svg"
+            "chip" : "light"
         },
         {
             "name" : "Blockchain",
-            "logo" : "vendor-blockchain.svg",
+            "logo" : "blockchain",
             "color" : "#82679e",
             "textColor" : "white",
             "textShadow" : "1px 1px 0px black",
-            "chip" : "-light.svg"
+            "chip" : "light"
         },
         {
             "name" : "Evil",
-            "logo" : "vendor-evil.svg",
+            "logo" : "evil",
             "color" : "#d43761",
             "textColor" : "white",
-            "textShadow" : "1px 1px 0px #ffffff",
-            "chip" : "-light.svg"
+            "textShadow" : "-0.5px -0.5px black",
+            "chip" : "light"
         },
         {
             "name" : "Ninja",
-            "logo" : "vendor-ninja.svg",
+            "logo" : "ninja",
             "color" : "#2b2a25",
             "textColor" : "white",
             "textShadow" : "-0.5px -0.5px black",
-            "chip" : "-light.svg"
+            "chip" : "light"
         }
     ]
 }

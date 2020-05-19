@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import Vendors from '@/assets/vendors.json'
-import Cards from '@/assets/cards.json'
+import Vendors from '@/assets/data/vendors.json'
+import Cards from '@/assets/data/cards.json'
 
 Vue.config.productionTip = false
 
