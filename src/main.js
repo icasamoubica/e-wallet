@@ -36,6 +36,7 @@ new Vue({
         },
         deleteCard(id) {
           this.cards = this.cards.filter(card => card.id != id)
+          localStorage.setItem('cards', JSON.stringify(this.cards))
         },
         loadData() {
           console.log('attempting to load data...');

@@ -20,10 +20,10 @@ export default {
             cardValidations.cardNumberEmpty = true
         } else if (card.cardNumber.length != 19) {
             cardValidations.cardNumberFormat = true
-        } else if (!(Number.isInteger(parseInt(card.cardNumber.substring(0, 4)), 10) 
-                && Number.isInteger(parseInt(card.cardNumber.substring(5, 9)), 10)
-                && Number.isInteger(parseInt(card.cardNumber.substring(10, 14)), 10)
-                && Number.isInteger(parseInt(card.cardNumber.substring(15, 19)), 10))) {
+        } else if (!(   Number.isInteger(parseInt(card.cardNumber.substring(0, 4)), 10) 
+                 &&     Number.isInteger(parseInt(card.cardNumber.substring(5, 9)), 10)
+                 &&     Number.isInteger(parseInt(card.cardNumber.substring(10, 14)), 10)
+                 &&     Number.isInteger(parseInt(card.cardNumber.substring(15, 19)), 10))) {
             cardValidations.cardNumberFormat = true
         } else {
             cardValidations.cardNumberFormat = false
