@@ -72,7 +72,11 @@ export default {
         return this.$store.state.cards
       },
       getCardStackHeight() {
-        return 20 + (this.$store.getters.getCards.length-1)*4
+        if(this.$store.state.cards.length > 0) {
+          return 20 + (this.$store.state.cards.length-1)*4
+        } else {
+          return 0
+        }  
       }
     },
 

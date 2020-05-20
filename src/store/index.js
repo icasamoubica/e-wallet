@@ -51,21 +51,5 @@ export default new Vuex.Store({
   },
 
   modules: {
-  },
-  
-  getters : {
-    getCards : state => {
-      return state.cards
-    },
-    getOldCards(state) {
-      return state.oldCards
-    },
-    getNewId(state) {
-      let ids = []
-      for (let card of state.cards) {
-        ids.push(card.id)
-      }
-      return Math.max(...ids) + 1
-    },
   }
 })
