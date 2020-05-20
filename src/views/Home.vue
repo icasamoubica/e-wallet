@@ -53,7 +53,7 @@ export default {
     },
     deleteSelected() {
       this.renderDeleteConfirmation = false
-      this.$root.deleteCard(this.selectedCard.id)
+      this.$store.commit('deleteCard', this.selectedCard.id)
       this.selectedCard = null
     },
     confirmDeleteSelected() {
@@ -66,13 +66,13 @@ export default {
 
   computed : {
       cardIsSelected() {
-        return this.selectedCard!=null
+        return this.selectedCard != null
       },
       existingCards() {
-        return this.$root.getCards()
+        return this.$store.state.cards
       },
       getCardStackHeight() {
-        return 20 + (this.$root.getCards().length-1)*4
+        return 20 + (this.$store.getters.getCards.length-1)*4
       }
     },
 
@@ -82,7 +82,7 @@ export default {
       CardStack
   },
   created() {
-    this.$root.loadData()
+    this.$store.dispatch('loadData')
   }
 
 }

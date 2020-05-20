@@ -59,7 +59,7 @@ export default {
     },
     computed : {
       getVendors() {
-          return this.$root.getVendors()
+          return this.$store.state.vendors
       }
     }
 }

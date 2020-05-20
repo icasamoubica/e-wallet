@@ -14,29 +14,18 @@ import Top from '@/components/Top'
 import Card from '@/components/Card'
 import CardForm from '@/components/CardForm'
 import Validations from '@/assets/scripts/validations.js'
+import NewCard from '@/assets/data/newCard.json'
 
 export default {
     data() { return {
 
+        Validations,
+
         // initial card for adding. note that the color is lightgrey by default
         // and that logo is bitcoing without it being the vendor
 
-        newCard : {
-            "id" : this.getNewId(),
-            "color" : 'grey',
-            "cardNumber" : 'XXXX XXXX XXXX XXXX',
-            "carholderName" : 'FIRSTNAME LASTNAME',
-            "validUntil" : 'MM/YY',
-            "ccv" : "XXX",
-            "vendor" : {
-                "name" : "none",
-                "logo" : "bitcoin",
-                "color" : "lightgrey",
-                "textColor" : "black",
-                "textShadow" : "0.5px 0.5px #ffffff, -0.5px -0.5px lightgrey",
-                "chip" : "dark"
-            }
-        },
+        newCard : NewCard.newCard,
+        
         // object contains errors for failed validations
         // ideally all should be false
 
@@ -59,27 +48,19 @@ export default {
     },
     methods : {
 
-        // Dont use addCard without validation
-
-        addCard(cardToAdd) {
-            this.$root.addCard(cardToAdd)
-        },
-        getNewId() {
-            return this.$root.getNewId()
-        },
         validate() {
             this.cardValidations = Validations.validate(this.newCard)
             if (this.allValidationsPassed()) {
-                this.$root.addCard(this.newCard)
+                this.$store.dispatch('loadData')
+                this.$store.commit('addCard', this.newCard)
                 this.$router.push('/')
             }
         },
+
         allValidationsPassed() {
             return Validations.allValidationsPassed(this.cardValidations)
         }
-    },
-
-    Validations
+    }
 }
 </script>
 
