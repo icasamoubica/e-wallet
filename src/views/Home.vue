@@ -18,14 +18,7 @@
       <router-link v-bind:to="'/addcard'">
         <button class="addCardButton">ADD A NEW CARD</button>
       </router-link>
-      <div class="confirmDialogContainer" v-if="renderDeleteConfirmation">
-        <div class="confirmDialog">
-          <p>Are you sure you want</p>
-          <p>to delete this card?</p>
-          <button v-on:click="deleteSelected">YES</button>
-          <button v-on:click="cancelConfirmation">NO</button>
-        </div>
-      </div>
+      <confirm-delete v-if="renderDeleteConfirmation" ></confirm-delete>
   </div>
 </template>
 
@@ -33,6 +26,7 @@
 import Top from '@/components/Top'
 import Card from '@/components/Card'
 import CardStack from '@/components/CardStack'
+import ConfirmDelete from '@/components/ConfirmDelete'
 
 export default {
 
@@ -40,34 +34,23 @@ export default {
 
   data(){return{
     cardStackHeight : 0,
-    selectedCard : null,
-    renderDeleteConfirmation : false
   }},
 
   methods : {
     selectCard(cardToSelect) {
-      this.selectedCard = cardToSelect
+      this.$store.state.selectedCard = cardToSelect
     },
     unselectCard() {
-      this.selectedCard = null
-    },
-    deleteSelected() {
-      this.renderDeleteConfirmation = false
-      this.$store.commit('deleteCard', this.selectedCard.id)
-      this.selectedCard = null
-      this.$router.push('/')
+      this.$store.state.selectedCard = null
     },
     confirmDeleteSelected() {
-      this.renderDeleteConfirmation = true
-    },
-    cancelConfirmation() {
-      this.renderDeleteConfirmation = false
+      this.$store.state.renderDeleteConfirmation = true
     }
   },
 
   computed : {
       cardIsSelected() {
-        return this.selectedCard != null
+        return this.$store.state.selectedCard != null
       },
       getCardStackHeight() {
         if(this.$store.state.cards.length > 0) {
@@ -78,21 +61,20 @@ export default {
       },
       existingCards() {
         return this.$store.state.cards
+      },
+      selectedCard() {
+        return this.$store.state.selectedCard
+      },
+      renderDeleteConfirmation() {
+        return this.$store.state.renderDeleteConfirmation
       }
-    },
-    beforeRouteUpdate (to, from, next) {
-        if(to.name==='Menu'){
-          this.$store.commit('hideInvisibleFilm')
-        } else if (to.name==='Cart') {
-          this.$store.commit('showInvisibleFilm')
-        }
-        next()  
-    },
+  },
 
   components : {
       Top,
       Card,
-      CardStack
+      CardStack,
+      ConfirmDelete
   },
   created() {
     this.$store.dispatch('loadData')
@@ -132,33 +114,6 @@ export default {
       width: 25rem;
       background-color: white;
     }
-    .confirmDialogContainer {
-      width: 100vw;
-      height: 100vh;
-      z-index: 9;
-      position: absolute;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-    }
-    .confirmDialog {
-      border: 2px solid black;
-      border-radius: 1rem;
-      padding: 2rem;
-      background-color: rgb(211, 211, 211);
-      position: fixed;
-      z-index: 10;
-      box-shadow: 0 0 5rem 5rem rgba(255, 255, 255, 1);
-    }
-    .confirmDialog p {
-      font-weight: 900;
-    }
-    .confirmDialog button {
-      margin: 1rem;
-      width: 5rem;
-      height: 2rem;
-      border-radius: 0.3rem;
-    }
+    
     
 </style>

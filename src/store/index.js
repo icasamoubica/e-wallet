@@ -11,6 +11,8 @@ export default new Vuex.Store({
     vendors : Vendors.vendors,
     oldCards : Cards.cards,
     cards : [],
+    renderDeleteConfirmation: false,
+    selectedCard: null,
     newCard: {
       color : "grey",
       cardNumber : "",
