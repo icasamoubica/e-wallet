@@ -2,7 +2,9 @@
     <form class="cardForm">
         <div class="cardNumberDiv">
             <label for="cardNumber">CARD NUMBER</label>
-            <input type="text" v-model="card.cardNumber" id="cardNumber" name="cardNumber">
+            <input type="text"  v-model="card.cardNumber" 
+                                placeholder="XXXX XXXX XXXX XXXX" 
+                                id="cardNumber" name="cardNumber">
             <div class="error">
                 <p v-if="cardValidations.cardNumberFormat && !cardValidations.cardNumberEmpty" class="errorCnFormat">Numbers only in format xxxx xxxx xxxx xxxx</p>
                 <p v-if="cardValidations.cardNumberEmpty" class="errorCnEmpty">Field cannot be empty</p>
@@ -10,7 +12,9 @@
         </div>
         <div class="carholderNameDiv">
             <label for="carholderName">CARDHOLDER NAME</label>
-            <input type="text" v-model="card.carholderName" id="carholderName" name="carholderName">
+            <input type="text"  v-model="card.carholderName" 
+                                placeholder="FIRSTNAME LASTNAME"
+                                id="carholderName" name="carholderName">
             <div class="error">
                 <p v-if="cardValidations.nameEmpty" class="errorNameEmpty">Field cannot be empty</p>
                 <p v-if="cardValidations.nameFormat && !cardValidations.nameEmpty" class="errorFormat">Please write both first and last name</p>
@@ -19,7 +23,9 @@
         <div class="validAndCcv">
             <div class="validThruDiv">
                 <label for="validThru">VALID THRU</label>
-                <input type="text" v-model="card.validUntil" id="validThru" name="validThru">
+                <input type="text"  v-model="card.validUntil" 
+                                    placeholder="MM/YY"
+                                    id="validThru" name="validThru">
                 <div class="error">
                     <p v-if="cardValidations.validThruFormat && !cardValidations.validThruEmpty" class="errorFormat">Please write in format MM/YY</p>
                     <p v-if="cardValidations.validThruEmpty" class="errorEmpty">Field cannot be empty</p>
@@ -27,7 +33,9 @@
             </div>
             <div class="ccvDiv">
                 <label for="ccv">CCV</label>
-                <input type="text" v-model="card.ccv" id="ccv" name="ccv">
+                <input type="text"  v-model="card.ccv"
+                                    placeholder="XXX"
+                                    id="ccv" name="ccv">
                 <div class="error">
                     <p v-if="cardValidations.ccvFormat && !cardValidations.ccvEmpty" class="errorFormat">Three digits only</p>
                     <p v-if="cardValidations.ccvEmpty" class="errorEmpty">Field cannot be empty</p>
@@ -53,8 +61,11 @@
 <script>
 
 export default {
+        // initial card for adding. note that the color is lightgrey by default
+        // and that logo is bitcoing without it being the vendor
+
     props : {
-        card : Object,
+        card: Object,
         cardValidations : Object
     },
     computed : {

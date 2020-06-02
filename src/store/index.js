@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import Vendors from '@/assets/data/vendors.json'
 import Cards from '@/assets/data/cards.json'
+import newCard from '@/assets/data/newCard.json'
 
 Vue.use(Vuex)
 
@@ -10,6 +11,21 @@ export default new Vuex.Store({
     vendors : Vendors.vendors,
     oldCards : Cards.cards,
     cards : [],
+    newCard: {
+      color : "grey",
+      cardNumber : "",
+      carholderName : "",
+      validUntil : "",
+      ccv : "",
+      vendor : {
+          name : "none",
+          logo : "bitcoin",
+          color : "lightgrey",
+          textColor : "black",
+          textShadow : "0.5px 0.5px #ffffff, -0.5px -0.5px lightgrey",
+          chip : "dark"
+      }
+    }
   },
 
   mutations: {
@@ -33,6 +49,9 @@ export default new Vuex.Store({
       
       state.cards.push(cardToAdd)
       localStorage.setItem('cards', JSON.stringify(state.cards))
+    },
+    resetNewCard(state) {
+      state.newCard = newCard.newCard
     }
   },
 

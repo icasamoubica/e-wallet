@@ -1,10 +1,10 @@
 {
     "newCard" : {
         "color" : "grey",
-        "cardNumber" : "XXXX XXXX XXXX XXXX",
-        "carholderName" : "FIRSTNAME LASTNAME",
-        "validUntil" : "MM/YY",
-        "ccv" : "XXX",
+        "cardNumber" : "",
+        "carholderName" : "",
+        "validUntil" : "",
+        "ccv" : "",
         "vendor" : {
             "name" : "none",
             "logo" : "bitcoin",

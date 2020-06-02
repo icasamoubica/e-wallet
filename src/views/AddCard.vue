@@ -2,7 +2,7 @@
     <div class="addCard">
         <top class="topText" v-bind:topText="'ADD A NEW'"></top>
         <top class="topText" v-bind:topText="'BANK CARD'"></top>
-        <card v-bind:card=newCard />
+        <card v-bind:card="newCard" />
         <card-form  v-bind:card = newCard
                     v-bind:cardValidations="cardValidations"></card-form>
         <button class="adCardButtonBlack" v-on:click="validate">ADD CARD</button>
@@ -14,17 +14,11 @@ import Top from '@/components/Top'
 import Card from '@/components/Card'
 import CardForm from '@/components/CardForm'
 import Validations from '@/assets/scripts/validations.js'
-import NewCard from '@/assets/data/newCard.json'
 
 export default {
     data() { return {
 
         Validations,
-
-        // initial card for adding. note that the color is lightgrey by default
-        // and that logo is bitcoing without it being the vendor
-
-        newCard : NewCard.newCard,
         
         // object contains errors for failed validations
         // ideally all should be false
@@ -49,16 +43,22 @@ export default {
     methods : {
 
         validate() {
-            this.cardValidations = Validations.validate(this.newCard)
+            this.cardValidations = Validations.validate(this.$store.state.newCard)
             if (this.allValidationsPassed()) {
                 this.$store.dispatch('loadData')
-                this.$store.commit('addCard', this.newCard)
+                this.$store.commit('addCard', this.$store.state.newCard)
+                this.$store.commit('resetNewCard')
                 this.$router.push('/')
             }
         },
 
         allValidationsPassed() {
             return Validations.allValidationsPassed(this.cardValidations)
+        }
+    },
+    computed: {
+        newCard() {
+            return this.$store.state.newCard
         }
     }
 }

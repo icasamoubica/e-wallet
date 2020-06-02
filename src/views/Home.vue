@@ -55,6 +55,7 @@ export default {
       this.renderDeleteConfirmation = false
       this.$store.commit('deleteCard', this.selectedCard.id)
       this.selectedCard = null
+      this.$router.push('/')
     },
     confirmDeleteSelected() {
       this.renderDeleteConfirmation = true
@@ -68,16 +69,24 @@ export default {
       cardIsSelected() {
         return this.selectedCard != null
       },
-      existingCards() {
-        return this.$store.state.cards
-      },
       getCardStackHeight() {
         if(this.$store.state.cards.length > 0) {
           return 20 + (this.$store.state.cards.length-1)*4
         } else {
           return 0
         }  
+      },
+      existingCards() {
+        return this.$store.state.cards
       }
+    },
+    beforeRouteUpdate (to, from, next) {
+        if(to.name==='Menu'){
+          this.$store.commit('hideInvisibleFilm')
+        } else if (to.name==='Cart') {
+          this.$store.commit('showInvisibleFilm')
+        }
+        next()  
     },
 
   components : {
@@ -87,6 +96,9 @@ export default {
   },
   created() {
     this.$store.dispatch('loadData')
+  },
+  beforeUpdate() {
+
   }
 
 }
